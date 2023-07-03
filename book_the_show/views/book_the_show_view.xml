@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id='book_the_show_action' model='ir.actions.act_window'>
+        <field name="name">Book The Show</field>
+        <field name="res_model">book.the.show</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No movie Found. Let's create one!
+            </p>
+            <p>
+                Currently no movie is streaming
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_book_the_show" name="Movie">
+        <menuitem id="menu_root_Movie" name="Book Your Show"/>
+    </menuitem>
+</odoo>
