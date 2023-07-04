@@ -16,7 +16,60 @@
     </record>
 
 
-    <menuitem id="menu_book_the_show" name="Movie">
-        <menuitem id="menu_root_Movie" name="Book Your Show"/>
+    <!--    Tree View For Book The Show-->
+
+    <record id="book_the_show_tree_view" model="ir.ui.view">
+        <field name="name">book.the.show.tree.view</field>
+        <field name="model">book.the.show</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="mv_name"/>
+                <field name="mv_description"/>
+                <field name="mv_release_date"/>
+                <field name="mv_duration" widget="float_time"/>
+                <field name="mv_rating"/>
+                <field name="mv_screen_type_ids"/>
+                <field name="mv_language_ids"/>
+                <field name="mv_genres_ids"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!--    Form View For Book The Show-->
+
+    <record id="view_movie_form" model="ir.ui.view">
+        <field name="name">book.the.show.form.view</field>
+        <field name="model">book.the.show</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="mv_name"/>
+                        <field name="mv_description"/>
+                        <field name="mv_release_date"/>
+                        <field name="mv_duration" widget="float_time"/>
+                        <field name="mv_rating"/>
+                        <field name="mv_screen_type_ids" widget="many2many_tags"/>
+                        <field name="mv_language_ids" widget="many2many_tags"/>
+                        <field name="mv_genres_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <menuitem id="first_level_menu" name="Movie">
+        <menuitem id="menu_finance_receivables" name="Movie">
+            <menuitem id="menu_pro" name="Movie List" action="book_the_show_action"/>
+            <menuitem id="menu_genres" name="Movie Genres" action="movie_genres_action"/>
+            <menuitem id="movie_screen_type" name="Screen Type" action="screen_type_action"/>
+            <menuitem id="movie_languages" name="Languages" action="movie_language_action"/>
+        </menuitem>
+<!--        <menuitem id="second_level_menu" name="Show">-->
+<!--            <menuitem id="show_menu" name="Show Timing" action="show_timing_action"/>-->
+<!--        </menuitem>-->
     </menuitem>
+
 </odoo>

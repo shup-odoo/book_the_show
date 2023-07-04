@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+book_the_show.access_book_the_show,access_book_the_show,book_the_show.model_book_the_show,base.group_user,1,1,1,1
+book_the_show.access_movie_language,access_movie_language,book_the_show.model_movie_language,base.group_user,1,1,1,1
+book_the_show.access_movie_genres,access_movie_genres,book_the_show.model_movie_genres,base.group_user,1,1,1,1
+book_the_show.access_screen_types,access_screen_types,book_the_show.model_screen_types,base.group_user,1,1,1,1
