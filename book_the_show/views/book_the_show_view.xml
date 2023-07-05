@@ -1,75 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-    <record id='book_the_show_action' model='ir.actions.act_window'>
-        <field name="name">Book The Show</field>
-        <field name="res_model">book.the.show</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                No movie Found. Let's create one!
-            </p>
-            <p>
-                Currently no movie is streaming
-            </p>
-        </field>
-    </record>
+    <data>
+        <record id='book_the_show_action' model='ir.actions.act_window'>
+            <field name="name">Book The Show</field>
+            <field name="res_model">book.the.show</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No movie Found. Let's create one!
+                </p>
+                <p>
+                    Currently no movie is streaming
+                </p>
+            </field>
+        </record>
 
 
-    <!--    Tree View For Book The Show-->
+        <!--    Tree View For Book The Show-->
 
-    <record id="book_the_show_tree_view" model="ir.ui.view">
-        <field name="name">book.the.show.tree.view</field>
+        <record id="book_the_show_tree_view" model="ir.ui.view">
+            <field name="name">book.the.show.tree.view</field>
+            <field name="model">book.the.show</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="mv_name"/>
+                    <field name="mv_description"/>
+                    <field name="mv_release_date"/>
+                    <field name="mv_duration" widget="float_time"/>
+                    <field name="mv_rating"/>
+                    <field name="mv_screen_type_ids"/>
+                    <field name="mv_language_ids"/>
+                    <field name="mv_genres_ids"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--    Form View For Book The Show-->
+
+        <record id="view_movie_form" model="ir.ui.view">
+            <field name="name">book.the.show.form.view</field>
+            <field name="model">book.the.show</field>
+            <field name="arch" type="xml">
+                <form string="property_view">
+                    <sheet>
+                        <group>
+                            <field name="mv_name"/>
+                            <field name="mv_description"/>
+                            <field name="mv_release_date"/>
+                            <field name="mv_duration" widget="float_time"/>
+                            <field name="mv_rating"/>
+                            <field name="mv_screen_type_ids" widget="many2many_tags"/>
+                            <field name="mv_language_ids" widget="many2many_tags"/>
+                            <field name="mv_genres_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- kanban view -->
+    <record id="book_the_show_kanban" model="ir.ui.view">
+        <field name="name">book.the.show.kanban.view</field>
         <field name="model">book.the.show</field>
         <field name="arch" type="xml">
-            <tree>
+            <kanban class="o_res_partner_kanban">
                 <field name="mv_name"/>
-                <field name="mv_description"/>
-                <field name="mv_release_date"/>
-                <field name="mv_duration" widget="float_time"/>
-                <field name="mv_rating"/>
-                <field name="mv_screen_type_ids"/>
-                <field name="mv_language_ids"/>
-                <field name="mv_genres_ids"/>
-            </tree>
+                <templates>
+                    <t t-name="kanban-box">
+                        <ul>
+                            <field name="mv_name"/>
+                        </ul>
+                    </t>
+                </templates>
+            </kanban>
+
         </field>
     </record>
 
-
-    <!--    Form View For Book The Show-->
-
-    <record id="view_movie_form" model="ir.ui.view">
-        <field name="name">book.the.show.form.view</field>
-        <field name="model">book.the.show</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="mv_name"/>
-                        <field name="mv_description"/>
-                        <field name="mv_release_date"/>
-                        <field name="mv_duration" widget="float_time"/>
-                        <field name="mv_rating"/>
-                        <field name="mv_screen_type_ids" widget="many2many_tags"/>
-                        <field name="mv_language_ids" widget="many2many_tags"/>
-                        <field name="mv_genres_ids" widget="many2many_tags"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
+        <menuitem id="first_level_menu" name="Movie">
+            <menuitem id="menu_finance_receivables" name="Movie" sequence="1">
+                <menuitem id="menu_pro" name="Movie List" action="book_the_show_action"/>
+                <menuitem id="menu_pro_setting" name="Movie Genres" action="movie_genres_action"/>
+                <menuitem id="menu_pro_ava" name="Screen Type" action="screen_type_action"/>
+                <menuitem id="menu_pro_av" name="Languages" action="movie_language_action"/>
+            </menuitem>
 
 
-    <menuitem id="first_level_menu" name="Movie">
-        <menuitem id="menu_finance_receivables" name="Movie">
-            <menuitem id="menu_pro" name="Movie List" action="book_the_show_action"/>
-            <menuitem id="menu_genres" name="Movie Genres" action="movie_genres_action"/>
-            <menuitem id="movie_screen_type" name="Screen Type" action="screen_type_action"/>
-            <menuitem id="movie_languages" name="Languages" action="movie_language_action"/>
+            <menuitem id="menu_advertisement" name="Show" sequence="2">
+                <menuitem id="menu_adv_market" name="Show Timing" action="show_timing_action"/>
+            </menuitem>
+
         </menuitem>
-<!--        <menuitem id="second_level_menu" name="Show">-->
-<!--            <menuitem id="show_menu" name="Show Timing" action="show_timing_action"/>-->
-<!--        </menuitem>-->
-    </menuitem>
-
+    </data>
 </odoo>

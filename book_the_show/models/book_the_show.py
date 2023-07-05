@@ -17,3 +17,4 @@ class BookTheShow(models.Model):
     mv_screen_type_ids = fields.Many2many('screen.types', string='Screen Type')
     mv_language_ids = fields.Many2many('movie.language', string='Movie Languages')
     mv_genres_ids = fields.Many2many('movie.genres', string='Movie Genres')
+    mv_select_movie = fields.One2many('movie.show.time', 'st_movie_name')

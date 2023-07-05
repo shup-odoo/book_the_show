@@ -7,4 +7,4 @@ class MovieLanguage(models.Model):
     # _order = "sequence"
 
     name = fields.Char('Name', required=True)
-    # language = fields.One2many("show.time", "st_screen_type")
+    language = fields.One2many("movie.show.time", "st_screen_type")

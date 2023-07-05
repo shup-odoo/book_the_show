@@ -3,3 +3,4 @@ book_the_show.access_book_the_show,access_book_the_show,book_the_show.model_book
 book_the_show.access_movie_language,access_movie_language,book_the_show.model_movie_language,base.group_user,1,1,1,1
 book_the_show.access_movie_genres,access_movie_genres,book_the_show.model_movie_genres,base.group_user,1,1,1,1
 book_the_show.access_screen_types,access_screen_types,book_the_show.model_screen_types,base.group_user,1,1,1,1
+book_the_show.access_movie_show_time,access_movie_show_time,book_the_show.model_movie_show_time,base.group_user,1,1,1,1

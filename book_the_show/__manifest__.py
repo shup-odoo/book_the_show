@@ -13,6 +13,7 @@
         'views/movie_genres_view.xml',
         'views/movie_language_view.xml',
         'views/screen_type_view.xml',
+        'views/show_time_view.xml',
         'views/book_the_show_view.xml'
     ]
 }
