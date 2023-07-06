@@ -15,5 +15,9 @@
         'views/screen_type_view.xml',
         'views/show_time_view.xml',
         'views/book_the_show_view.xml'
+    ],
+    'demo': [
+        'demo/book_the_show_demo.xml',
+        'demo/movie_language_demo.xml'
     ]
 }

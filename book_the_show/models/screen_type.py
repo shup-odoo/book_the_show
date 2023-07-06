@@ -7,4 +7,5 @@ class ScreenType(models.Model):
     # _order = "sequence"
 
     name = fields.Char('Name', required=True)
-    screen_id = fields.One2many("movie.show.time", "st_language")
+    # screen_id = fields.One2many("movie.show.time", "st_language")
+

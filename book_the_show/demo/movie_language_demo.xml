@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="movie_language_demo_1" model="movie.language">
+            <field name="name">Hindi</field>
+        </record>
+        <record id="movie_language_demo_2" model="movie.language">
+            <field name="name">English</field>
+        </record>
+        <record id="movie_language_demo_3" model="movie.language">
+            <field name="name">Gujarati</field>
+        </record>
+        <record id="movie_language_demo_4" model="movie.language">
+            <field name="name">Telugu</field>
+        </record>
+        <record id="movie_language_demo_5" model="movie.language">
+            <field name="name">Tamil</field>
+        </record>
+        <record id="movie_language_demo_6" model="movie.language">
+            <field name="name">Malayalam</field>
+        </record>
+    </data>
+</odoo>
