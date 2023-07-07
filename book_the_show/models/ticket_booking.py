@@ -8,3 +8,4 @@ class BookTheShow(models.Model):
     _description = "Ticket Booking for Movie"
     # _rec_name = "mv_name"
     # _order = "sequence"
+
