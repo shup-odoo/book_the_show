@@ -18,8 +18,9 @@ class BookTheShow(models.Model):
     mv_screen_type_ids = fields.Many2many('screen.types', string='Screen Type')
     mv_language_ids = fields.Many2many('movie.language', string='Movie Languages')
     mv_genres_ids = fields.Many2many('movie.genres', string='Movie Genres')
-    mv_select_movie = fields.One2many('movie.show.time', 'st_movie_name')
+    mv_movie_show = fields.One2many('movie.show.time', 'st_movie_name')
     mv_image = fields.Image(string="Movie Image")
+    mv_select_movie = fields.One2many('ticket.booking', 'tb_select_movie')
 
     _sql_constraints = [
         ('check_movie_rating', 'CHECK(mv_rating <= 10)', 'The Movie Rating should be less then 10'),

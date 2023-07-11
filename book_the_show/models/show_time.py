@@ -22,3 +22,5 @@ class ShowTime(models.Model):
                                                 ('evening_01', "18:00"),
                                                 ('night', "21:00")
                                                 ])
+    st_seat_type = fields.Selection([('standard', 'Standard'), ('vip', 'VIP'), ('premium', 'Premium')],
+                                    string='Seat Type')
