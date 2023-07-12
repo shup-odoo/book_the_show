@@ -112,6 +112,7 @@
 
         <menuitem id="menu_advertisement" name="Show" sequence="2">
             <menuitem id="menu_adv_market" name="Show Timing" action="show_timing_action"/>
+            <menuitem id="menu_adv_market1" name="Ticket Booking" action="ticket_booking_action"/>
         </menuitem>
     </menuitem>
 </odoo>

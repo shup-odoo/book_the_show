@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id='ticket_booking_action' model='ir.actions.act_window'>
+        <field name="name">Ticket Booking</field>
+        <field name="res_model">ticket.booking</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No genres Found. Let's create one!
+            </p>
+            <p>
+                Currently no genres available
+            </p>
+        </field>
+    </record>
+
+    <record id="view_movie_screen_form" model="ir.ui.view">
+        <field name="name">Ticket.Booking.form</field>
+        <field name="model">ticket.booking</field>
+        <field name="arch" type="xml">
+            <form string="Ticket Booking">
+                <sheet>
+                    <group>
+                        <field name="tb_ticket_booking_movie"/>
+                        <field name="tb_select_show"/>
+                        <field name="tb_select_screen_number"/>
+                        <field name="tb_select_show_time"/>
+                        <field name="tb_seat_type"/>
+                        <field name="tb_number_of_seats"/>
+                        <field name="tb_seat_price"/>
+                        <field name="tb_total_price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

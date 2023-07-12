@@ -10,9 +10,11 @@ class ShowTime(models.Model):
     _rec_name = "st_movie_name"
 
     st_movie_name = fields.Many2one('book.the.show', string="Select Movie")
+    st_show_name = fields.Char(string="SHOW Name")
     # st_start_time = fields.Float(string='Time')
     st_screen_type = fields.Many2many('screen.types', string='Screen Type')
     st_language = fields.Many2many('movie.language', string='Movie Languages')
+
     st_screen_number = fields.Selection(string='Screen Number',
                                         selection=[('1', 1), ('2', 2), ('3', 3),
                                                    ('4', 4)])
@@ -22,5 +24,4 @@ class ShowTime(models.Model):
                                                 ('evening_01', "18:00"),
                                                 ('night', "21:00")
                                                 ])
-    st_seat_type = fields.Selection([('standard', 'Standard'), ('vip', 'VIP'), ('premium', 'Premium')],
-                                    string='Seat Type')
+
