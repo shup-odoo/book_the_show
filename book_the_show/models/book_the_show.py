@@ -19,7 +19,7 @@ class BookTheShow(models.Model):
     mv_language_ids = fields.Many2many('movie.language', string='Movie Languages')
     mv_genres_ids = fields.Many2many('movie.genres', string='Movie Genres')
     mv_movie_show = fields.One2many('movie.show.time', 'st_movie_name')
-    mv_image = fields.Image(string="Movie Image")
+    mv_image = fields.Binary(string="Movie Image", store=True)
     mv_select_movie = fields.One2many('movie.show.time', 'st_movie_name')
 
     _sql_constraints = [

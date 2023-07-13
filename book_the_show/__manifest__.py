@@ -18,7 +18,8 @@
         'views/book_the_show_view.xml'
     ],
     'demo': [
-        'demo/book_the_show_demo.xml',
-        'demo/movie_language_demo.xml'
+        'demo/screen_type_movie_genres_demo.xml',
+        'demo/movie_language_demo.xml',
+        # 'demo/book_the_show_demo.xml',
     ]
 }

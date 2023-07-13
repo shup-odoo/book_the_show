@@ -23,7 +23,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="st_movie_name"/>
-                <field name="tb_select_show"/>
+                <field name="st_show_name"/>
                 <field name="st_start_time"/>
                 <field name="st_screen_number"/>
                 <field name="st_screen_type"/>
