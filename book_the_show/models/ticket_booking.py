@@ -10,7 +10,7 @@ class TicketBooking(models.Model):
 
     tb_ticket_booking_movie = fields.Many2one("movie.show.time", string="Select the show")
     tb_select_show = fields.Char(string="SHOW Name", related="tb_ticket_booking_movie.st_show_name",
-                                      store=True)
+                                 store=True)
     tb_select_screen_number = fields.Selection(string='Screen Number',
                                                related="tb_ticket_booking_movie.st_screen_number",
                                                store=True)

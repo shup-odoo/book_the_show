@@ -7,3 +7,4 @@ class MovieGenres(models.Model):
     # _order = "sequence"
 
     name = fields.Char('Name', required=True)
+    color = fields.Integer(string='Color')

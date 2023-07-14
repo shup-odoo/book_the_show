@@ -8,3 +8,4 @@ class MovieLanguage(models.Model):
 
     name = fields.Char('Name', required=True)
     # language = fields.One2many("movie.show.time", "st_screen_type")
+    color = fields.Integer(string='Color')

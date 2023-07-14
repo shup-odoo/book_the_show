@@ -8,4 +8,4 @@ class ScreenType(models.Model):
 
     name = fields.Char('Name', required=True)
     # screen_id = fields.One2many("movie.show.time", "st_language")
-
+    color = fields.Integer(string='Color')
