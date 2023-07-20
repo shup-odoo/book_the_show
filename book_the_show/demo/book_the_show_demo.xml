@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="movie_demo" model="book.the.show">
+            <field name="mv_name">Chhichhore</field>
+            <field name="mv_release_date">2023/12/31</field>
+            <field name="mv_duration">180</field>
+            <field name="mv_description">Chhichhore</field>
+<!--            <field name="mv_screen_type_ids" eval="[ref('demo_data_1'),ref('demo_data_2')]"/>-->
+            <field name="mv_language_ids" eval="[ref('movie_language_demo_1'),ref('movie_language_demo_2')]"/>
+<!--            <field name="mv_genres_ids" eval="[ref('demo_data_1'),ref('demo_data_2')]"/>-->
+        </record>
+    </data>
+</odoo>

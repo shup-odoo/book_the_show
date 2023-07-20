@@ -25,6 +25,8 @@ class TicketBooking(models.Model):
 
     tb_total_price = fields.Float(string="Total Price", compute='_compute_total_price')
 
+    tb_seat_available = fields.Integer(string="Number of Seats Available", default='250', compute='_compute_available')
+
     _sql_constraints = [
         ('check_number_of_seats', 'CHECK(tb_number_of_seats <= 10)',
          "Sorry you don't book more then 10 tickets at a time ")]
@@ -41,5 +43,9 @@ class TicketBooking(models.Model):
 
     @api.depends('tb_number_of_seats', 'tb_seat_price')
     def _compute_total_price(self):
-        # for area in self:
         self.tb_total_price = self.tb_number_of_seats * self.tb_seat_price
+
+    # @api.depends('tb_number_of_seats', 'tb_seat_available')
+    # def _compute_available(self):
+    #     for record in self:
+    #         record.tb_number_of_seats = record.tb_number_of_seats - record.tb_number_of_seats

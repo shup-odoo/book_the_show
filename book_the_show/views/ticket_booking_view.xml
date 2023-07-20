@@ -30,6 +30,7 @@
                         <field name="tb_number_of_seats"/>
                         <field name="tb_seat_price"/>
                         <field name="tb_total_price"/>
+<!--                        <field name="tb_seat_available"/>-->
                     </group>
                 </sheet>
             </form>
