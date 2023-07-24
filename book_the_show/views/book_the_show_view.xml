@@ -74,6 +74,8 @@
         <field name="arch" type="xml">
             <kanban class="o_res_partner_kanban">
                 <field name="mv_name"/>
+                <field name="mv_release_date"/>
+                <field name="mv_screen_type_ids"/>
                 <field name="id"/>
                 <field name="mv_image"/>
                 <field name="mv_image" widget="image" class="oe_avatar"/>
@@ -88,10 +90,18 @@
                             </div>
                             <div>
                                 <strong class="o_kanban_record_title">
-                                    <h2>
-                                        <field name="mv_name"/>
-                                    </h2>
+                                    <span>
+                                        <h2>
+                                            <field name="mv_name"/>
+                                        </h2>
+                                    </span>
                                 </strong>
+                            </div>
+                            <div class="col-12">Release Date :
+                                <field name="mv_release_date"/>
+                            </div>
+                            <div class="col-12">
+                                <field name="mv_screen_type_ids" widget="many2many"/>
                             </div>
                         </div>
                     </t>
@@ -139,7 +149,7 @@
     </record>
 
 
-    <menuitem id="first_level_menu" name="Movie">
+    <menuitem id="first_level_menu" name="Movie" web_icon="book_the_show,static/description/icon.png">
         <menuitem id="menu_finance_receivables" name="Movie" sequence="1">
             <menuitem id="menu_pro" name="Movie List" action="book_the_show_action"/>
             <menuitem id="menu_pro_setting" name="Movie Genres" action="movie_genres_action"/>

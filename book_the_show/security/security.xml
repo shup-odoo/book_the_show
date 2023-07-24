@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record model="ir.module.category" id="movie_module">
+        <field name="name">Book The Show - Odoo </field>
+        <field name="description">Movie Booking System</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="movie_group_ticket_checker" model="res.groups">
+        <field name="name">Ticket Checker</field>
+        <field name="category_id" ref="base.module_category_movie_book_the_show"/>
+    </record>
+
+    <record id="movie_group_manager" model="res.groups">
+        <field name="name">movie Manager</field>
+        <field name="category_id" ref="base.module_category_movie_book_the_show"/>
+        <field name="implied_ids" eval="[(4, ref('movie_group_ticket_checker'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="record_rule_id_manager" model="ir.rule">
+        <field name="name">Record rule for Manager</field>
+        <field name="model_id" ref="model_book_the_show"/>
+        <field name="groups" eval="[(4, ref('movie_group_manager'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+
+    </record>
+
+</odoo>
