@@ -13,7 +13,7 @@ class BookTheShow(models.Model):
 
     mv_name = fields.Char('Movie Name ', required=True, tracking=True)
     mv_description = fields.Text('Description', required=True)
-    mv_release_date = fields.Date('Release Date', required=True, tracking=True)
+    mv_release_date = fields.Date('Release Date', tracking=True)
     mv_duration = fields.Float(string='Time')
     mv_rating = fields.Float(string="Movie Rating")
     mv_screen_type_ids = fields.Many2many('screen.types', string='Screen Type')
@@ -22,7 +22,18 @@ class BookTheShow(models.Model):
     mv_movie_show = fields.One2many('movie.show.time', 'st_movie_name')
     mv_image = fields.Binary(string="Movie Image", store=True, tracking=True)
     mv_select_movie = fields.One2many('movie.show.time', 'st_movie_name')
+    status = fields.Selection(string="state",
+                              selection=[('coming_soon', 'Coming_Soon'), ('new', 'New'),
+                                         ('just_released', ' Just_Released'), ('old', 'Old'),
+                                         ('flop', 'Flop'), ('released_on_platform', 'Released_On_Platform')],
+                              copy=False, default='new',
+                              tracking=True)
 
     _sql_constraints = [
         ('check_movie_rating', 'CHECK(mv_rating <= 10)', 'The Movie Rating should be less then 10'),
         ('mv_name_unique', 'UNIQUE(mv_name)', 'The Movie name should be unique')]
+
+    @api.ondelete(at_uninstall=False)
+    def ondelete_movie(self):
+        if self.mv_status not in ('flop', 'released_on_platform'):
+            raise UserError("Only flop and released on platform movies can be deleted")

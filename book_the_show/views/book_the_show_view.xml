@@ -4,7 +4,7 @@
     <record id='book_the_show_action' model='ir.actions.act_window'>
         <field name="name">Book The Show</field>
         <field name="res_model">book.the.show</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form,kanban,gantt</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No movie Found. Let's create one!
@@ -13,6 +13,7 @@
                 Currently no movie is streaming
             </p>
         </field>
+<!--        <field name="context">{'search_default_status': 1}</field>-->
     </record>
 
 
@@ -22,12 +23,13 @@
         <field name="name">book.the.show.tree.view</field>
         <field name="model">book.the.show</field>
         <field name="arch" type="xml">
-            <tree multi_edit="1">
+            <tree multi_edit="1" class="oe_status_decorate">
                 <field name="mv_name"/>
                 <field name="mv_description"/>
                 <field name="mv_release_date"/>
                 <field name="mv_duration" widget="float_time"/>
                 <field name="mv_rating"/>
+                <field name="status"/>
                 <field name="mv_screen_type_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
                 <field name="mv_language_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
                 <field name="mv_genres_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
@@ -43,6 +45,9 @@
         <field name="model">book.the.show</field>
         <field name="arch" type="xml">
             <form string="property_view">
+                <header>
+                    <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
                 <sheet>
                     <field name="mv_image" nolabel="1" widget="image" class="oe_right oe_avatar"/>
                     <group>
@@ -51,6 +56,7 @@
                         <field name="mv_release_date"/>
                         <field name="mv_duration" widget="float_time"/>
                         <field name="mv_rating"/>
+                        <field name="status"/>
                         <field name="mv_screen_type_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
                         <field name="mv_language_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
                         <field name="mv_genres_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
@@ -110,24 +116,6 @@
         </field>
     </record>
 
-
-    <!--    <odoo>-->
-    <!--        <record model="ir.ui.view" id="ir.ui.view">-->
-    <!--            <field name="name">book.the.show.grid.view</field>-->
-    <!--            <field name="model">book.the.show</field>-->
-    <!--            <field name="arch" type="xml">-->
-    <!--                <grid string="Theater View">-->
-    <!--                    <field name="mv_name"/>-->
-    <!--                    <field name="mv_description"/>-->
-    <!--                    <field name="mv_release_date"/>-->
-    <!--                    <field name="mv_duration" widget="float_time"/>-->
-    <!--                    <field name="mv_rating"/>-->
-    <!--                </grid>-->
-    <!--            </field>-->
-    <!--        </record>-->
-    <!--    </odoo>-->
-
-
     <!--    Search View -->
 
     <record id="book_the_show_search_view" model="ir.ui.view">
@@ -139,12 +127,31 @@
                 <field name="mv_screen_type_ids"/>
                 <field name="mv_language_ids"/>
                 <field name="mv_genres_ids"/>
+                <field name="status"/>
                 <group expand="1" string="Group By">
+                    <filter string="Available" name="status"
+                            domain="[('status','in',['new','coming_soon','just_released'])]"/>
                     <filter string="Screen Type" name="mv_screen_type_ids" context="{'group_by':'mv_screen_type_ids'}"/>
                     <filter string="Movie Genres" name="mv_genres_ids" context="{'group_by':'mv_genres_ids'}"/>
                     <filter string="Movie Languages" name="mv_language_ids" context="{'group_by':'mv_language_ids'}"/>
+                    <filter string="Movie status" name="status" context="{'group_by':'status'}"/>
                 </group>
             </search>
+        </field>
+    </record>
+
+
+    <record id="view_seat_reservation_gantt" model="ir.ui.view">
+        <field name="name">seat.reservation.gantt</field>
+        <field name="model">book.the.show</field>
+        <field name="arch" type="xml">
+            <gantt string="Theater Seat Reservations" date_start="mv_release_date" date_stop="mv_release_date">
+                <field name="mv_name"/>
+                <field name="mv_screen_type_ids"/>
+                <field name="mv_language_ids"/>
+                <field name="mv_genres_ids"/>
+                <!-- Add any other fields you want to display in the Gantt view -->
+            </gantt>
         </field>
     </record>
 

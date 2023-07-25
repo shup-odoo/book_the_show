@@ -21,7 +21,7 @@
     'demo': [
         'demo/screen_type_movie_genres_demo.xml',
         'demo/movie_language_demo.xml',
-        # 'demo/book_the_show_demo.xml',
+        'demo/book_the_show_demo.xml',
     ],
     'assets': {
         'web.assets_backend': [

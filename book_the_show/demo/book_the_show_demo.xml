@@ -3,12 +3,32 @@
     <data>
         <record id="movie_demo" model="book.the.show">
             <field name="mv_name">Chhichhore</field>
-            <field name="mv_release_date">2023/12/31</field>
-            <field name="mv_duration">180</field>
+            <field name="mv_duration">3:00</field>
             <field name="mv_description">Chhichhore</field>
-<!--            <field name="mv_screen_type_ids" eval="[ref('demo_data_1'),ref('demo_data_2')]"/>-->
+            <field name="mv_screen_type_ids" eval="[ref('demo_data_1'),ref('demo_data_2')]"/>
             <field name="mv_language_ids" eval="[ref('movie_language_demo_1'),ref('movie_language_demo_2')]"/>
-<!--            <field name="mv_genres_ids" eval="[ref('demo_data_1'),ref('demo_data_2')]"/>-->
+            <field name="mv_genres_ids" eval="[ref('demo_data_1'),ref('demo_data_2')]"/>
+            <field name="mv_release_date" eval="(DateTime.today() + timedelta(days=10)).strftime('%Y-%m-%d 00:00:00')"/>
+        </record>
+
+        <record id="movie_demo_2" model="book.the.show">
+            <field name="mv_name">3 Idiots</field>
+            <field name="mv_duration">2:59</field>
+            <field name="mv_description">3 Idiots</field>
+            <field name="mv_screen_type_ids" eval="[ref('demo_data_4'),ref('demo_data_5')]"/>
+            <field name="mv_language_ids" eval="[ref('movie_language_demo_1'),ref('movie_language_demo_5')]"/>
+            <field name="mv_genres_ids" eval="[ref('demo_data_31'),ref('demo_data_51'),ref('demo_data_72')]"/>
+            <field name="mv_release_date" eval="(DateTime.today() + timedelta(days=5)).strftime('%Y-%m-%d 00:00:00')"/>
+        </record>
+
+        <record id="movie_demo_3" model="book.the.show">
+            <field name="mv_name">3:30</field>
+            <field name="mv_duration">150</field>
+            <field name="mv_description">KGF</field>
+            <field name="mv_screen_type_ids" eval="[ref('demo_data_4'),ref('demo_data_6')]"/>
+            <field name="mv_language_ids" eval="[ref('movie_language_demo_3'),ref('movie_language_demo_4')]"/>
+            <field name="mv_genres_ids" eval="[ref('demo_data_31'),ref('demo_data_51')]"/>
+            <field name="mv_release_date" eval="(DateTime.today() + timedelta(days=-11)).strftime('%Y-%m-%d 00:00:00')"/>
         </record>
     </data>
 </odoo>
